@@ -20618,6 +20618,7 @@
 	                            program: $scope.allProgramNames[event.program],
 	                            status: event.status,
 	                            orgUnit: event.orgUnitName,
+								meetingName: getMeetingName('mExtEMfVa92',event.dataValues),
 	                            relName: relName,
 	                            relId: rel.relationship,
 	                            relationshipProgramConstraint: relationshipProgram,
@@ -20634,6 +20635,19 @@
 	        CurrentSelection.set({ tei: $scope.selectedTei, te: $scope.trackedEntityType, prs: selections.prs, pr: $scope.selectedProgram, prNames: selections.prNames, prStNames: selections.prStNames, enrollments: selections.enrollments, selectedEnrollment: $scope.selectedEnrollment, optionSets: selections.optionSets, orgUnit: selections.orgUnit });
 	    };
 	
+
+		var getMeetingName = function getMeetingName(id,datavalues) {
+			var name = '';
+			datavalues.forEach(function (datavalue) {
+	            if (datavalue.dataElement === id) {
+					name = datavalue.value;
+	            }
+	            
+	        });
+			return name;
+			
+		}
+
 	    var getRelativeAttributes = function getRelativeAttributes(teiAttributes) {
 	        var attributes = {};
 	        teiAttributes.forEach(function (attr) {
